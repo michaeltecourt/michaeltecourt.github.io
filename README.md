@@ -1,2 +1,2 @@
 # michaeltecourt.github.io
-GitHub pages
+Some GitHub pages about me
