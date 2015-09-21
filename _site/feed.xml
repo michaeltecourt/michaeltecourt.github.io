@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Michael &quot;ako&quot; Tecourt</title>
+    <description>Yet another programmer with love for his job.
+</description>
+    <link>http://yourdomain.com/</link>
+    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 21 Sep 2015 23:08:01 +0200</pubDate>
+    <lastBuildDate>Mon, 21 Sep 2015 23:08:01 +0200</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>First post with Jekyll</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; is neat.  &lt;/p&gt;
+
+&lt;p&gt;Well that’s all I have to say for my first post.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 22 Sep 2015 00:56:00 +0200</pubDate>
+        <link>http://yourdomain.com/2015/09/22/first-one.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2015/09/22/first-one.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

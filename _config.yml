@@ -1,0 +1,15 @@
+# Site settings
+title: Michael "ako" Tecourt
+email: michael@tecourt.com
+description: > # this means to ignore newlines until "baseurl:"
+  Yet another programmer with love for his job.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+# twitter_username: jekyllrb
+github_username:  michaeltecourt
+
+# Build settings
+markdown: kramdown
+
+timezone: Europe/Paris
+
