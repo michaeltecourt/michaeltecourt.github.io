@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "HTTP APIs and REST"
-date:   2015-09-19 16:07:18
+date:   2015-09-30 00:00:00
 categories: 
 ---
 
@@ -32,11 +32,14 @@ you have to understand the context it was created in, and the needs it answered.
 The _hypermedia as the engine of application state_ thing looks like a detail from now, 
 but you have to remember that before the web network-based applications were built like your voicemail : 
 The server had to track _state_ of where the client was in the navigation tree, to propose him options (or views).
-Imagine the scalability issues if each of your apps had to store _on which page_ each user is at a given time !
+Imagine the scalability issues if each of your apps had to store _which page each user is currently browsing_ !
 
 Hyperlinks and URLs solved that. And the funny thing is, native mobile applications are technically a regression from REST.
 
-You can set up a RESTful architecture without HTTP and pretty URIs. 
+You can set up a RESTful architecture without HTTP and pretty URIs.  
+In fact, REST does not require HTTP. We can see the modern web as the reference implementation of REST, HTTP being the application protocol behind it.  
+
+You could build RESTful applications over mainframe servers and IBM proprietary protocols, if you're into that.
 
 {% highlight ruby %}
 def print_hi(name)
@@ -56,9 +59,9 @@ A parallel with kosher would be :
  
 Therefore, trying to build a RESTful RPC service is like trying to make a kosher double cheese with pork bacon : you can't.
 
-You can make it look like a hamburger with bacon with turkey bacon.  
-You can make it look like a crappy cheeseburger with soy cheese.
-In the end you can't make anything kosher with beef, cheese and pork.
+You can make it look like a bacon hamburger with turkey bacon.  
+You can make it look like a crappy cheeseburger with soy cheese.  
+In the end you can't make anything kosher with beef, cheese and pork at the same time.
 
 Same goes for REST:
 
