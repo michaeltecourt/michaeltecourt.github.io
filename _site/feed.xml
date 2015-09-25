@@ -6,9 +6,78 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 21 Sep 2015 23:08:01 +0200</pubDate>
-    <lastBuildDate>Mon, 21 Sep 2015 23:08:01 +0200</lastBuildDate>
+    <pubDate>Fri, 25 Sep 2015 23:25:40 +0200</pubDate>
+    <lastBuildDate>Fri, 25 Sep 2015 23:25:40 +0200</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Mobile apps madness</title>
+        <description>&lt;p&gt;I often hear colleagues and family speak about how big bad internet companies collect their data.  &lt;/p&gt;
+
+&lt;p&gt;Yet, I find it highly confusing that these same persons are the ones who blindly give permissions to mobile apps.  &lt;/p&gt;
+
+&lt;p&gt;Let’s answer the following questions together :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Would you install an application to access your bank accounts on your desktop/laptop computer, instead of using your browser ? &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Would you give it full access over your files and hardware, for features that will &lt;strong&gt;never&lt;/strong&gt; work offline anyway ?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Even if &lt;strong&gt;all&lt;/strong&gt; these features can already be accessed from a website…&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;in a device-friendly user interface ?&lt;/li&gt;
+      &lt;li&gt;without giving up any access to your private data ?&lt;/li&gt;
+      &lt;li&gt;without taking overpriced diskspace on your overpriced iPhone ?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;lets-phrase-this-another-way--are-you-nuts-&quot;&gt;Let’s phrase this another way : Are you nuts ?!&lt;/h2&gt;
+
+&lt;p&gt;Why bring all that nonsense to your mobile phone, which is just a small touch-based computer loaded with private data ? &lt;br /&gt;
+Does that cool looking icon in the app store really makes you lose your mind ?  &lt;/p&gt;
+
+&lt;h3 id=&quot;but-typing-addresses-is-boring&quot;&gt;&lt;em&gt;“But typing addresses is boring”&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Just put the mobile site in your favorites, and &lt;a href=&quot;http://www.cnet.com/how-to/adding-one-touch-bookmarks-to-your-androids-home-screen/&quot;&gt;add a shortcut icon to your homescreen&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As a rule of thumb, do not install an application unless it provides irreplaceable offline features.  &lt;/p&gt;
+
+&lt;p&gt;Such features may be :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;using a GPS for navigation - NOT localization, ordering your cab can be achieved through a browser !&lt;/li&gt;
+  &lt;li&gt;stuff with advanced graphics : games, sketching, video editing…&lt;/li&gt;
+  &lt;li&gt;stuff to read offline : books, courses, music/video apps with offline mode…&lt;/li&gt;
+  &lt;li&gt;professional tooling : payment, docs, spreadsheets…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Exception to the offline rule is when you need to get notified (push) in real time : messaging, traffic alerts…&lt;/p&gt;
+
+&lt;p&gt;What you obviously &lt;strong&gt;don’t&lt;/strong&gt; need to install apps for :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Checking your bank account -&amp;gt; website !&lt;/li&gt;
+  &lt;li&gt;Social networks -&amp;gt; website !&lt;/li&gt;
+  &lt;li&gt;Ordering a pizza -&amp;gt; website, or *shocker* : phone !&lt;/li&gt;
+  &lt;li&gt;Reading the news -&amp;gt; website or paper !&lt;/li&gt;
+  &lt;li&gt;Shop online -&amp;gt; website !!&lt;/li&gt;
+  &lt;li&gt;Anything that was only a website before smartphones -&amp;gt; website !!!&lt;/li&gt;
+  &lt;li&gt;Any promotional offer that requires you to install an app -&amp;gt; just don’t, unless getting spammed makes you feel special&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We’re probably screwed when it comes to vendors collecting data directly from our operating systems, 
+let’s not add shoot ourserlves in the foot by opening more doors than necessary.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 25 Sep 2015 22:00:00 +0200</pubDate>
+        <link>http://yourdomain.com/2015/09/25/mobile-apps-madness.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2015/09/25/mobile-apps-madness.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>First post with Jekyll</title>
