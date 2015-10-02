@@ -6,9 +6,269 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 25 Sep 2015 23:25:40 +0200</pubDate>
-    <lastBuildDate>Fri, 25 Sep 2015 23:25:40 +0200</lastBuildDate>
+    <pubDate>Sat, 26 Sep 2015 00:06:05 +0200</pubDate>
+    <lastBuildDate>Sat, 26 Sep 2015 00:06:05 +0200</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Y U NO USE UML</title>
+        <description>&lt;p&gt;While a picture is worth a thousands words, a good diagram is often better than : &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a couple hour-long meetings&lt;/li&gt;
+  &lt;li&gt;six e-mails &lt;/li&gt;
+  &lt;li&gt;a 2MB PDF no developer will ever open&lt;/li&gt;
+  &lt;li&gt;the three above together&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After pulling my hair speaking with product managers about interpretations we couldn’t agree on,&lt;br /&gt;
+after endless arguments with architects about what the clean design should have/could have been,&lt;br /&gt;
+after talking for too long about the pros and cons of solutions that would never work,&lt;br /&gt;
+I’ve found out that it’s much more productive to starting scribbling on the white board instead of debating through the air when a problem arises.&lt;/p&gt;
+
+&lt;p&gt;Most programmers agree, but the problem is that we have that tendency to re-invent the wheel when it comes to sketching what we have in mind.&lt;br /&gt;
+Having recently worked on authentication and authorization projects for a large company, I encountered a LOT of unique pieces of office art over the past few months.&lt;/p&gt;
+
+&lt;h2 id=&quot;weve-all-been-there&quot;&gt;We’ve all been there&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Hey there’s that large process involving a handful of components with complex interactions, 
+let me draw five boxes and link them up as ideas come out of my mind !&lt;br /&gt;
+And now that the thing has become a spaghetti ball nobody can understand, I’ll add numbers on top of the arrows, 
+and each number will have a legend with large paragraphs I’ll put in a word file !&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Optional :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vivid colors for extra-level of confusion&lt;/li&gt;
+  &lt;li&gt;Servers depicted as 1985 computers, globe icon representing the outside world (that’s deep)&lt;/li&gt;
+  &lt;li&gt;All arrows pointing both ways, killing any chance of finding a starting point amid the chaos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/y-u-no-use-uml.jpg&quot; alt=&quot;y-u-no-use-uml&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Unfortunately you can’t put everything on the same diagram.&lt;br /&gt;
+We rarely pull out a diagram for something too trivial, 
+and good diagrams follow the same rules as good object design : separation of concerns.&lt;br /&gt;
+Sorry, you will probably have to draw 2 or 3 different diagrams to represent each aspect of a complex feature.&lt;/p&gt;
+
+&lt;p&gt;I’m no UML purist to be honest, I don’t think you should &lt;em&gt;always&lt;/em&gt; hit your modeling tool (or sharpen your pencil) before coding.&lt;br /&gt;
+Heck, I just draw diagrams when words fail, and it’s often far from perfect.  &lt;/p&gt;
+
+&lt;p&gt;Here are the ones I often use, depending on what I want to express.&lt;/p&gt;
+
+&lt;h2 id=&quot;useful-uml-diagrams&quot;&gt;Useful UML diagrams&lt;/h2&gt;
+
+&lt;h3 id=&quot;sequence-diagram&quot;&gt;Sequence Diagram&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Use case&lt;/strong&gt; : &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;I want to visualize the chain of interactions between actors during a process&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is the one you want to bring for that long meeting with other teams about how you’ll implement the latest fancy Single Sign-On protocol.&lt;br /&gt;
+It can of course document any kind of interactions between applications, components, classes or whatever you want.
+If I had to keep only one type of diagram it would be this one.&lt;br /&gt;
+It literally saved me days of :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;explaining which actor does what&lt;/li&gt;
+  &lt;li&gt;arguing on solutions that suck : a sequence diagram visually reveals the complexity of bad solutions&lt;/li&gt;
+  &lt;li&gt;arguing on interpretation : no room for doubt when each call is written along with its parameters&lt;/li&gt;
+  &lt;li&gt;most importantly, starting a development that would prove to be impossible&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let me emphasize this last point : when done with care, a Sequence Diagram can point out any missing element in a complex process before you start coding.&lt;br /&gt;
+The logic of the process will be described step by step, forcing your consciousness into every detail :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;For this call, where do we find this parameter ? it has not been provisioned.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;How can the client track the order if we didn’t send him the generated ID ?&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;This flow is plain impossible, it would force us to send a password cleartext !&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;We need to make three server calls here, we can save round trips by storing some data the first time&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I don’t like uncompromising rules, but I wouldn’t start implementing something complex involving 
+third-parties without drawing a precise Sequence Diagram first.&lt;/p&gt;
+
+&lt;h3 id=&quot;component-diagram&quot;&gt;Component Diagram&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Use case&lt;/strong&gt; : &lt;em&gt;I have a bunch of components and I want to picture them with their dependencies.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This diagram depicts what are the components of a given system and how they are linked through their interfaces.&lt;br /&gt;
+It helps you keep in mind &lt;em&gt;who&lt;/em&gt; does &lt;em&gt;what&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Great for design discussions early on, as you can shape up the main building blocks of a project, 
+share the big picture, and dispatch elements to different people.&lt;/p&gt;
+
+&lt;p&gt;At the age of microservices, where every functionality is potentially broken down into multiple HTTP applications, 
+it can be a really helpful to have a representation of the whole.&lt;/p&gt;
+
+&lt;h3 id=&quot;deployment-diagram&quot;&gt;Deployment Diagram&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Use case&lt;/strong&gt; : &lt;em&gt;I want to know where my components are.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The deployment diagram is about &lt;em&gt;where&lt;/em&gt; components are physically installed, not &lt;em&gt;what&lt;/em&gt; they do.  &lt;/p&gt;
+
+&lt;p&gt;If you have a huge list of VMs containing a myriad of apps somewhere in a public cloud, 
+a deployment diagram can be your sky map.&lt;br /&gt;
+It can also be useful if you have to talk with the ops team, 
+or you need to track packages in a distributed environment.  &lt;/p&gt;
+
+&lt;h3 id=&quot;activity-diagram&quot;&gt;Activity Diagram&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Use case&lt;/strong&gt; : &lt;em&gt;I want to zoom in on this complex process and figure out all the possible scenarios&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’re into Business Process Management (BPM) tools, 
+chances are you have no choice but to begin with BPMN, which 
+&lt;a href=&quot;http://www.sparxsystems.com/enterprise_architect_user_guide/9.2/model_simulation/bpmn_simulation_comparison.html&quot;&gt;shares a lot of similarities&lt;/a&gt; 
+with Activity Diagrams.  &lt;/p&gt;
+
+&lt;p&gt;Algorithms are also good candidates for Activity Diagrams. They can help you find out edge cases and unhandled errors.&lt;br /&gt;
+The focus is clearly different from a Sequence Diagram, which often aims to describe the steps of the “main case” in a linear fashion.&lt;br /&gt;
+Activity Diagrams stand at a higher level, the technical details are not thoroughly enumerated.&lt;/p&gt;
+
+&lt;p&gt;Good news, regular humans can read it without help.  &lt;/p&gt;
+
+&lt;h3 id=&quot;class-diagram&quot;&gt;Class Diagram&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Use case&lt;/strong&gt; : &lt;em&gt;I still think object oriented programming should rule the world and 
+I want to impress people with the dozen GoF design patterns I shoe-horned in my new library.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Or more seriously, if you’re working with peers on the same codebase and you want to agree on fine grain design, 
+class diagrams offer a nice way to get started on a white board.&lt;br /&gt;
+I tend to throw these diagrams away when implementation is over, 
+as modern IDEs do a better job than me at reverse engineering it from the code.&lt;/p&gt;
+
+&lt;h3 id=&quot;those-i-dont-really-like&quot;&gt;Those I don’t really like&lt;/h3&gt;
+
+&lt;h4 id=&quot;use-case-diagram&quot;&gt;Use Case Diagram&lt;/h4&gt;
+&lt;p&gt;That’s only my opinion, but I find Use Case Diagrams more confusing than text. 
+Actors, features and roles can easily be broken down in a table with a handful of bullet points for each row.&lt;br /&gt;
+Also, the principal stage for this diagram is early product design, and business guys rarely buy into it.&lt;br /&gt;
+They should have the final say in which solution fits their need, just like developers for technical solutions.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-rest&quot;&gt;The rest&lt;/h4&gt;
+
+&lt;p&gt;Once again this is subjective but I find the other diagrams overkill.&lt;br /&gt;
+Thanks to &lt;a href=&quot;http://creately.com/blog/diagrams/uml-diagram-types-examples&quot;&gt;this site&lt;/a&gt;, here is a list I couldn’t have remembered on my own : &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;State diagrams : Similar to activity diagrams that I prefer.&lt;/li&gt;
+  &lt;li&gt;Package diagrams : I find the code self explanatory in most cases, which awfully sounds like lazyness.&lt;/li&gt;
+  &lt;li&gt;Communication diagrams : the exact same can be produced with a sequence diagram, in a much clearer fashion.&lt;/li&gt;
+  &lt;li&gt;Timing diagrams : aren’t diagrams supposed to make things easier to understand ?!&lt;/li&gt;
+  &lt;li&gt;Profile diagrams, composite structure diagrams, interaction overview diagrams, object diagrams : seriously, who has the time for this stuff in a real world project ?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tooling&quot;&gt;Tooling&lt;/h2&gt;
+
+&lt;p&gt;Until recently I struggled to find a good tool for the job.&lt;br /&gt;
+UML modelers were either expensive, not portable, or plain crap.  &lt;/p&gt;
+
+&lt;p&gt;Then came &lt;a href=&quot;https://draw.io&quot;&gt;https://draw.io&lt;/a&gt;, a free web-based diagram editor.&lt;br /&gt;
+It’s pretty much everything I’ve been expected and then some.&lt;br /&gt;
+The UI is smooth, you find everything you want right away. Lightweight and effective.&lt;br /&gt;
+You can save the diagrams to a number of platforms : Google Drive, Dropbox, browser, file system…
+The diagrams can also be exported in any format you want (png, pdf, html…) 
+and the XML source can either be downloaded separately (nice for versioning in a git repository) 
+or embedded directly in image files.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;If you feel like drawing is more efficient than words when it comes to documenting software, 
+let’s try to do it in a way most people can understand right away.&lt;br /&gt;
+Personally I found out the hard way that the UML guys had the diagram thing covered for two decades.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 30 Sep 2015 02:00:00 +0200</pubDate>
+        <link>http://yourdomain.com/2015/09/30/y-u-no-use-uml.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2015/09/30/y-u-no-use-uml.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>HTTP APIs and REST</title>
+        <description>&lt;p&gt;Yet another blog post about what REST is.	&lt;/p&gt;
+
+&lt;h2 id=&quot;rest-is-synonym-for-browseable&quot;&gt;REST is synonym for “browseable”&lt;/h2&gt;
+
+&lt;p&gt;Everyone already has a REST API in their website.&lt;br /&gt;
+Most chances are, your website is truly RESTful while your application programming interface is not.&lt;/p&gt;
+
+&lt;p&gt;All the constraints, details and nitpicking that will follow don’t matter. REST is just an abstraction over “how the web works”, 
+how your browser interacts with a web server.&lt;/p&gt;
+
+&lt;p&gt;If your client needs to &lt;em&gt;understand&lt;/em&gt; anything more than the resource format, it ain’t REST.&lt;br /&gt;
+Why ? because the motherf**ker will go down any time you alter some resource characteristics.&lt;br /&gt;
+Does you browser break down when I change HTML tags on my blog’s page ? 
+No, because your browser just understands well formatted HTML.
+Same goes for atom readers, if an article changes the reader won’t break down unless the resource is made of some invalid XML.
+See the trend ? If the server sends back some resource with the correct format, then your client should not break.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;And how can I do that for my API ?&lt;/em&gt; Dude you probably can’t, unless you extract some kind of abstraction over your data model 
+and make it a full fledged media type. And why the hell would you want to do that ? 
+you’re probably doing RPC calls, and no one will blame you for that.&lt;/p&gt;
+
+&lt;p&gt;To understand why REST was such a major step forward in the way we built applications, 
+you have to understand the context it was created in, and the needs it answered.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;hypermedia as the engine of application state&lt;/em&gt; thing looks like a detail from now, 
+but you have to remember that before the web network-based applications were built like your voicemail : 
+The server had to track &lt;em&gt;state&lt;/em&gt; of where the client was in the navigation tree, to propose him options (or views).
+Imagine the scalability issues if each of your apps had to store &lt;em&gt;which page each user is currently browsing&lt;/em&gt; !&lt;/p&gt;
+
+&lt;p&gt;Hyperlinks and URLs solved that. And the funny thing is, native mobile applications are technically a regression from REST.&lt;/p&gt;
+
+&lt;p&gt;You can set up a RESTful architecture without HTTP and pretty URIs.&lt;br /&gt;
+In fact, REST does not require HTTP. We can see the modern web as the reference implementation of REST, HTTP being the application protocol behind it.  &lt;/p&gt;
+
+&lt;p&gt;You could build RESTful applications over mainframe servers and IBM proprietary protocols, if you’re into that.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;kosher-double-cheese-with-bacon&quot;&gt;Kosher double cheese with bacon&lt;/h2&gt;
+&lt;p&gt;REST has a number of key constraints that Dr. Roy T. Fielding summed up a academic (douchy?) manner.&lt;/p&gt;
+
+&lt;p&gt;A parallel with kosher would be : &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If it’s pork, it ain’t kosher&lt;/li&gt;
+  &lt;li&gt;If you mix meat and milk, it ain’t kosher&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Therefore, trying to build a RESTful RPC service is like trying to make a kosher double cheese with pork bacon : you can’t.&lt;/p&gt;
+
+&lt;p&gt;You can make it look like a bacon hamburger with turkey bacon.&lt;br /&gt;
+You can make it look like a crappy cheeseburger with soy cheese.&lt;br /&gt;
+In the end you can’t make anything kosher with beef, cheese and pork at the same time.&lt;/p&gt;
+
+&lt;p&gt;Same goes for REST:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If you break your client by making changes that are still valid within your media type, it ain’t REST&lt;/li&gt;
+  &lt;li&gt;If you break your client by changing some resource URLs, it ain’t REST&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HAL is trying to fix a problem very few people actually need to solve : 
+why the hell would you put extra effort to make your API RESTish with hyperlinks no-one will follow, 
+when all you need is a bunch of HTTP endpoints for your clients ?&lt;br /&gt;
+Let’s assume our non-restfulness and keep on building cool HTTP APIs. 
+The world needed some interoperable standard for inter-application communication, 
+and where the enterprise world failed with over engineered protocols, 
+the web guys found a solution that was standing right before our eyes with plain HTTP.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 30 Sep 2015 02:00:00 +0200</pubDate>
+        <link>http://yourdomain.com/2015/09/30/http-api.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2015/09/30/http-api.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Mobile apps madness</title>
