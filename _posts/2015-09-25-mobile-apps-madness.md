@@ -53,4 +53,4 @@ What you obviously **don't** need to install apps for :
 
 
 We're probably screwed when it comes to vendors collecting data directly from our operating systems, 
-let's not add shoot ourserlves in the foot by opening more doors than necessary.
+let's not shoot ourserlves in the foot by opening more doors than necessary.
