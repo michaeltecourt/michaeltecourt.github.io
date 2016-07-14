@@ -1,11 +1,10 @@
 # Site settings
-title: Michael "ako" Tecourt
-email: michael@tecourt.com
+title: Michael Tecourt
 description: > # this means to ignore newlines until "baseurl:"
-  Yet another programmer with love for his job.
+  Coding, american football, and very serious thoughts. Because in France, having an opinion counts more than doing something about it.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
-# twitter_username: jekyllrb
+twitter_username: michaeltecourt
 github_username:  michaeltecourt
 
 # Build settings
