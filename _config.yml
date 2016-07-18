@@ -1,7 +1,7 @@
 # Site settings
 title: Michael Tecourt
 description: > # this means to ignore newlines until "baseurl:"
-  Coding, american football, and very serious thoughts. Because in France, having an opinion counts more than doing something about it.
+  Keep it simple, no-nonsense.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: michaeltecourt
