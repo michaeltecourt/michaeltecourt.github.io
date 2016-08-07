@@ -2,13 +2,236 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Michael Tecourt</title>
-    <description>Coding, american football, and very serious thoughts. Because in France, having an opinion counts more than doing something about it.
+    <description>Keep it simple, no-nonsense.
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 17 Jul 2016 00:13:50 +0200</pubDate>
-    <lastBuildDate>Sun, 17 Jul 2016 00:13:50 +0200</lastBuildDate>
+    <pubDate>Sun, 07 Aug 2016 03:23:48 +0200</pubDate>
+    <lastBuildDate>Sun, 07 Aug 2016 03:23:48 +0200</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Y U NO USE UML</title>
+        <description>&lt;p&gt;While a picture is worth a thousands words, a good diagram is better than :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a couple hour-long meetings&lt;/li&gt;
+  &lt;li&gt;six e-mails&lt;/li&gt;
+  &lt;li&gt;a 2MB PDF no developer will ever open&lt;/li&gt;
+  &lt;li&gt;the three above together&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After pulling my hair speaking with product managers about interpretations we couldn’t agree on,&lt;br /&gt;
+after endless arguments with architects about what the clean design should have/could have been,&lt;br /&gt;
+after talking for too long about the pros and cons of solutions that would never work,&lt;br /&gt;
+I’ve found out that it’s much more productive to starting scribbling on the white board instead of debating through the air.&lt;/p&gt;
+
+&lt;p&gt;Most programmers agree, but the problem is that we have that tendency to re-invent the wheel when it comes to sketching what we have in mind.&lt;br /&gt;
+Having worked recently on authentication and authorization projects on a fairly large system, I encountered a LOT of unique pieces of office art over the past few months. 
+The enterprise world is full of unexpected creativity.&lt;/p&gt;
+
+&lt;h2 id=&quot;weve-all-been-there&quot;&gt;We’ve all been there&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Hey there’s that large process involving a handful of components with complex interactions, 
+let me draw five boxes and link them up as ideas come out of my mind !&lt;br /&gt;
+And now that the thing has become a spaghetti ball nobody can understand, I’ll add numbers on top of the arrows, 
+and each number will have a legend with large paragraphs I’ll put in a word file !&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Optional :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vivid colors for extra-level of confusion&lt;/li&gt;
+  &lt;li&gt;Servers depicted as 1985 computers, globe icon representing the outside world, various shapes of clouds&lt;/li&gt;
+  &lt;li&gt;All arrows pointing both ways, killing any chance of finding a starting point amid the chaos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;No kidding, the diagram below was like the 3rd result when I googled “Software Architecture Diagram”.&lt;br /&gt;
+Despite its simplicity, it is already an effort to figure out what the arrows mean :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://image.slidesharecdn.com/diagramming-140128130130-phpapp01/95/a-software-architects-view-on-diagramming-9-638.jpg?cb=1396270322&quot; alt=&quot;Live Example&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To be fair, the target audience of this diagram is probably not programmers, 
+maybe managers who want to get an idea of what happens under the hood.&lt;br /&gt;
+The problem is, people use this kind of diagram as technical documentation / blueprints.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/y-u-no-use-uml.jpg&quot; alt=&quot;y-u-no-use-uml&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Unfortunately you can’t put everything on the same diagram and expect it to be clear.&lt;br /&gt;
+We rarely pull out a diagram for something too trivial, 
+and good diagrams follow the same rules as good object design : separation of concerns.&lt;br /&gt;
+Sorry, you will probably have to draw 2 or 3 different diagrams to represent each aspect of a complex feature.&lt;/p&gt;
+
+&lt;p&gt;From &lt;a href=&quot;https://en.wikipedia.org/wiki/Unified_Modeling_Language&quot;&gt;Wikipedia&lt;/a&gt; :&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Structure diagrams emphasize the things that must be present in the system being modeled.&lt;br /&gt;
+Since structure diagrams represent the structure, they are used extensively in documenting 
+the software architecture of software systems.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Behavior diagrams emphasize what must happen in the system being modeled. 
+Since behavior diagrams illustrate the behavior of a system, 
+they are used extensively to describe the functionality of software systems.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For the sake of our minds, &lt;strong&gt;Don’t mix structure and behavior together on one diagram.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In other words :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;don’t mix up the technical and business stuff in one do-it-all scribble&lt;/li&gt;
+  &lt;li&gt;don’t try to describe &lt;em&gt;what&lt;/em&gt; you do and &lt;em&gt;how&lt;/em&gt; on the same picture&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’m no UML purist to be honest (do they still exist ?), I don’t think you should &lt;em&gt;always&lt;/em&gt; hit your modeling tool, 
+or sharpen your pencil, before coding.&lt;br /&gt;
+Heck, I just draw diagrams when words fail, and it’s far from perfect.&lt;/p&gt;
+
+&lt;p&gt;Here are the ones I often use, depending on what I want to express.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note : This is based on my very practical and personal enterprise experience.&lt;/em&gt;&lt;br /&gt;
+&lt;em&gt;UML experts / college teachers would probably lapidate me on sight for my many imprecisions.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;useful-uml-diagrams&quot;&gt;Useful UML diagrams&lt;/h2&gt;
+
+&lt;h3 id=&quot;sequence-diagram-behavior&quot;&gt;Sequence Diagram (behavior)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Use case&lt;/strong&gt; :  &lt;em&gt;I want to visualize the chain of interactions between actors during a process&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sequence-diagram.png&quot; alt=&quot;Sequence Diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the one you want to bring for that long meeting with other teams about how you’ll implement the latest fancy Single Sign-On protocol.&lt;br /&gt;
+It can of course document any kind of interactions between applications, components, classes or whatever you want.
+If I had to keep only one type of diagram it would be this one.&lt;br /&gt;
+It literally saved me days of :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;explaining which actor does what&lt;/li&gt;
+  &lt;li&gt;arguing on solutions that suck : a sequence diagram visually reveals the complexity of bad solutions&lt;/li&gt;
+  &lt;li&gt;arguing on interpretation : no room for doubt when each call is written along with its parameters&lt;/li&gt;
+  &lt;li&gt;most importantly, starting a development that would prove to be impossible&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let me emphasize this last point : when done with care, a Sequence Diagram can point out any missing element in a complex process before you start coding.&lt;br /&gt;
+The logic of the process will be described step by step, forcing your consciousness into every detail :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;For this call, where do we find this parameter ? it has not been provided&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;How can the client track the order if we didn’t send him the generated ID ?&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;This flow is plain impossible, it would force us to send a password cleartext&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;We need to make three server calls here, we can save round trips by storing some data the first time&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I don’t like uncompromising rules, but I wouldn’t start implementing something complex involving 
+third-parties before agreeing on a precise Sequence Diagram first.&lt;/p&gt;
+
+&lt;h3 id=&quot;component-diagram-structure&quot;&gt;Component Diagram (structure)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Use case&lt;/strong&gt; : &lt;em&gt;I have a bunch of components and I want to picture them with their dependencies.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This diagram depicts what are the components of a given system and how they are linked through their interfaces.&lt;/p&gt;
+
+&lt;h4 id=&quot;application-scope-probably-not-the-right-way-to-call-that&quot;&gt;Application Scope (probably not the right way to call that)&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/internal-component-diagram.png&quot; alt=&quot;Component Diagram&quot; /&gt;&lt;br /&gt;
+&lt;em&gt;Who care about lollipops and interfaces ?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;While looking at an application’s internals, component diagrams are cool for design discussions early on, 
+as you can shape up the main modules and dispatch each component to different developers.&lt;/p&gt;
+
+&lt;p&gt;Component diagrams can be much more precise than just dependencies, by picturing which interfaces are shared with whom.&lt;br /&gt;
+I’ve tried a couple times, and it gets too fuzzy in my opinion.&lt;/p&gt;
+
+&lt;h4 id=&quot;system-scope-probably-not-the-right-name-either&quot;&gt;System scope (probably not the right name either)&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/system-component-diagram.png&quot; alt=&quot;Deployment Component Diagram&quot; /&gt;
+&lt;em&gt;Notice how the cool looking component icon is pointless here.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;At the system level, I like to use component diagrams to display application/resources dependencies.&lt;br /&gt;
+To be honest, it’s kind of a mix between a simplistic Component and &lt;strong&gt;Deployment Diagram&lt;/strong&gt; (machines are just physical components anyway).
+In a microservice architecture, where every functionality is potentially broken down into multiple HTTP applications, 
+having a representation of the big picture is really helpful.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Whatever the scope is, just don’t try to describe a business process on top of a component/deployment diagram !&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;activity-diagram-behavior&quot;&gt;Activity Diagram (behavior)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Use case&lt;/strong&gt; : &lt;em&gt;I want to zoom in on this complex process and figure out all the possible scenarios&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/activity-diagram.png&quot; alt=&quot;Activity Diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I don’t often get to draw activity diagrams, but I when I do, 
+it’s probably because I’m trying to make some sense out of a poorly described business process.&lt;/p&gt;
+
+&lt;p&gt;Good news, regular humans can read it without help. Better, business guys can draft it themselves.&lt;/p&gt;
+
+&lt;h3 id=&quot;class-diagram-structure&quot;&gt;Class Diagram (structure)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Use case&lt;/strong&gt; : &lt;em&gt;I still think object oriented programming should rule the world and 
+I want to impress people with the dozen design patterns I shoe-horned in my new library.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/class-diagram.png&quot; alt=&quot;Class Diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Or more seriously, if you’re working with peers on the same codebase and you want to agree on fine grain design, 
+class diagrams offer a nice way to get started on a white board.&lt;br /&gt;
+I usually throw these diagrams away at the end of a short design meeting or when done implementing, 
+as IDEs do a better job than us at reverse engineering them from the code.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-rest&quot;&gt;The rest&lt;/h2&gt;
+
+&lt;p&gt;That’s only my opinion, but I find the other diagrams overkill.&lt;br /&gt;
+Thanks to &lt;a href=&quot;http://creately.com/blog/diagrams/uml-diagram-types-examples&quot;&gt;this site&lt;/a&gt;, here is a list I couldn’t have remembered on my own :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use Case diagrams : I find Use Case Diagrams more confusing than text. 
+Actors, features and roles can easily be broken down in tables and bullet points. 
+Also, the principal stage for this diagram is early product design, 
+and business guys don’t buy into abstract techie methodology pushed down their throats (me neither).&lt;/li&gt;
+  &lt;li&gt;State diagrams : Similar to activity diagrams that I prefer.&lt;/li&gt;
+  &lt;li&gt;Package diagrams : I find the code self explanatory in most cases, which awfully sounds like lazyness.&lt;/li&gt;
+  &lt;li&gt;Communication diagrams : the exact same can be produced with a sequence diagram, in a much clearer fashion.&lt;/li&gt;
+  &lt;li&gt;Timing diagrams : aren’t diagrams supposed to make things easier to understand ?!&lt;/li&gt;
+  &lt;li&gt;Profile diagrams, composite structure diagrams, interaction overview diagrams, object diagrams : seriously, who has the time for this stuff in a real world project ?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tooling&quot;&gt;Tooling&lt;/h2&gt;
+
+&lt;p&gt;Finding the right tool for the job has been a pain : UML modelers are either expensive, not portable, plain crap, or all three.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://draw.io&quot;&gt;https://draw.io&lt;/a&gt;, a free web-based diagram editor, is pretty much everything 
+I’ve been expected and then some (it helped me design my kitchen too).&lt;br /&gt;
+The UI is smooth, you find everything you want right away. Lightweight and effective.&lt;br /&gt;
+You can export the diagram image with XML source embedded – check out with the diagrams above.&lt;br /&gt;
+Unfortunately, drawings are cool the first time around but they are a burden to maintain, 
+and the XML representation cannot be reasonably manipulated by hand.&lt;/p&gt;
+
+&lt;p&gt;Although &lt;a href=&quot;http://plantuml.com&quot;&gt;PlantUML&lt;/a&gt; is old, don’t let the website scare you away, 
+it’s still the best solution around, especially its integration with &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor-maven-examples/tree/master/asciidoctor-diagram-example&quot;&gt;AsciiDoctor through a maven plugin&lt;/a&gt;
+(thanks to &lt;a href=&quot;http://jroller.com/aalmiray/&quot;&gt;Andres Almiray&lt;/a&gt; for the great talk at Voxxed Days Berlin 2016).
+Writing diagrams using text is clearly the most maintainable approach.&lt;br /&gt;
+The bad : diagrams look like their website, and compiling them to images require the native Graphviz/dot library installed on your machine.
+It will be great once they finally rewrite dot in some portable language, which looks like a &lt;a href=&quot;http://fr.plantuml.com/smetana01.html&quot;&gt;daunting task&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Or if you’re in the mood, you can generate diagrams from ascii art using &lt;a href=&quot;http://ditaa.sourceforge.net/&quot;&gt;Ditaa&lt;/a&gt;.&lt;br /&gt;
+Unproductive but funny. Integration with AsciiDoctor is available too.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;If you feel like drawing is more efficient than words when it comes to documenting software, 
+let’s try to do it in a way most of us can understand right away.&lt;br /&gt;
+The UML guys had the diagram thing covered for two decades. If UML is overkill, simplify the syntax of a diagram type without losing sight of the key information you want to share.&lt;/p&gt;
+
+&lt;p&gt;And if you should only remember one thing out of this : &lt;strong&gt;Don’t mix structure and behavior together on one diagram.&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 06 Aug 2016 02:00:00 +0200</pubDate>
+        <link>http://yourdomain.com/2016/08/06/y-u-no-use-uml.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/2016/08/06/y-u-no-use-uml.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Service Discovery and the forgotten URNs</title>

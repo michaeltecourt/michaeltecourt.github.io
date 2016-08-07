@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+## Freelance Software Developer
+
 I like creating things and helping out others. I code for a living and I love it.  
 
 Friends call me _ako_.
