@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>HTTP APIs and Hypermedia</title>
+    <meta name="description" content="Keep it simple, no-nonsense.
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://yourdomain.com/2016/08/08/http-apis-and-hypermedia.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Michael Tecourt</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">HTTP APIs and Hypermedia</h1>
+    <p class="post-meta">Aug 8, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <p>I have been trying to finish this blog post forever, and the motivation was sparked by a <a href="https://twitter.com/olivergierke/status/761860716169162752">tweet from Spring’s Oliver Gierke</a>, thanks a lot !</p>
+
+<blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr"><a href="https://twitter.com/olivergierke">@olivergierke</a> in brief : We like service registries because we do RPC. We care less about hypermedia because actually we don&#39;t do REST. Easy</p>&mdash; Michael Tecourt (@michaeltecourt) <a href="https://twitter.com/michaeltecourt/status/761880373735424002">6 août 2016</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p><em>Note : While checking the definition of <a href="https://en.wikipedia.org/wiki/Remote_procedure_call">RPC</a> 
+I realized that the concept was not just about calling remote services, 
+it came along with the <a href="http://martinfowler.com/bliki/FirstLaw.html">crazy</a> idea 
+of making programmers forget about network constraints. 
+I’ll keep using the acronym RPC for “remote service calls” as most people get it.</em></p>
+
+<p>Solutions like Eureka are popular because they solve a concrete configuration problem in the world of remote/micro services : 
+instead of configuring the address of each service consumed by your application, each service checks-in with Eureka, 
+and your application queries Eureka by to know where services are located.<br />
+Configuration goes from N URLs to 1, at the price of a couple <code class="highlighter-rouge">spring-cloud-starter-eureka*</code> dependencies : easiness wins, like always in programming.<br />
+Also usual in programming, fancy names can be misleading : <em>service discovery</em> is more about <em>service address discovery</em> or <em>service registration</em> depending on the angle.<br />
+Applications do not discover brand new services and learn how to use them on the fly, 
+applications are coded to call certain services and expect certain responses out them. 
+Only the “root” address of those services is configured “lazily” at runtime. Concrete problem, concrete solution.</p>
+
+<p>On the other hand, what Oliver Gierke calls <em>resource discovery</em> here is guided by a more theorical quest : how to get RESTful.</p>
+
+<p>Let’s put some context first and clarify what we’ve been doing with remote services and HTTP for the past decade.</p>
+
+<h2 id="where-we-at--json-over-http">Where we at : JSON over HTTP</h2>
+
+<p>Remember the mid 2000s when SOAP was all the rage and we realized we could make HTTP calls 
+between javascript client and servers with <a href="https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest">XHR</a> ?</p>
+
+<p>Easiness kicked out  XML and SOAP (a.k.a. XML-RPC) from the picture, as the up and coming JavaScript guys established their 
+own way for calling remote services, based on their path of least resistence : JSON over HTTP.</p>
+
+<p>The whole point was to consume the same services from the browser as from other servers, 
+potentially written in different languages. 
+We were finally having the interoperability standard that 
+enterprise guys had wanted for years through the likes of RMI/Corba/SOAP. 
+That standard just came in unexpected fashion from web folks.<br />
+Back then RPC (Remote Procedure Call) was not a bad word, in fact it was what we were doing (proof, <a href="https://en.wikipedia.org/wiki/JSON-RPC">JSON RPC</a>), 
+and it still applies to what we do with public HTTP APIs. 
+Our need is to remotely call services coded by other people, and we use HTTP for transport because it proved to be the easiest.</p>
+
+<p>People became judgemental with RPC when the word REST came out.</p>
+
+<h2 id="what-rest-means--browsable">What REST means : “browsable”</h2>
+
+<p>Ever since somebody dug out Dr. Roy T. Fielding’s <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">thesis</a> in the same period, 
+the words REST/RESTful have been the subject of a lot of debate on the web.</p>
+
+<p><a href="https://www.youtube.com/watch?v=pspy1H6A3FM">This talk by Stefan Tilkov</a> shoots down a bunch of common misconceptions, 
+even though I don’t necessarily agree on everything that follows.<br />
+The most important misconception is that <code class="highlighter-rouge">REST = HTTP + pretty URLs</code>.</p>
+
+<p>To define REST in one word : <strong>browsable</strong>.<br />
+“Representational State Transfer” is the set of constraints that a client/server architecture must observe to follow a stateless browsing model.<br />
+The reference implementation of a RESTful application is a <strong>web site</strong>, the reference implementation of a RESTful client is a <strong>web browser</strong>.<br />
+Your API is RESTful if it can be browsed. Plain and simple. Everything else is a corollary.<br />
+As we all know <a href="http://martinfowler.com/bliki/TwoHardThings.html">naming things</a> is one of the hardest things in programming, 
+that’s why finding such a catchy name might already be worthy of a PhD by itself.</p>
+
+<p>As <a href="https://www.infoq.com/articles/roy-fielding-on-versioning">per Fielding himself</a> :</p>
+
+<blockquote>
+  <p>A RESTful API (done right) is just a website for clients with a limited vocabulary.</p>
+</blockquote>
+
+<p>For some reason, ever since JSON/HTTP services became popular, web developers have wanted it to be REST.<br />
+Like if REST was an instant proof of good design or something. Roy Fielding never 
+stated that RPC was <em>bad</em>, he said it was not REST (don’t piss off the guy by using the term incorrectly, 
+or he will shower you in with academic jargon).</p>
+
+<h2 id="hateoas">HATEOAS</h2>
+
+<p>In that quest for the almighty RESTful-ness, some web folks read that we <a href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">needed hypermedia to make our APIs RESTful</a>.</p>
+
+<p>Let’s first translate “Hypermedia As The Engine Of Application State” into something less cool.<br />
+All it means is that an application’s state, i.e. “where you are in the application”, must be defined by links.<br />
+Sounds familiar ? HATEOAS is a complicated way of describing how your browser works. 
+The browser itself only has to follow links to change the state (current page) of the application (site) you are browsing. 
+The browser itself does not know in advance how to navigate a site, it just follows the links you click, 
+as each request generated by following links are self sufficient, 
+the server can transition to a new page without knowing where you were before.
+<strong>HATEAOAS means that following links tell the application what to do next</strong>.</p>
+
+<p>REST in the form of HTML is meant to drive a <em>whole application</em>, especially view transitions.<br />
+The principle of browsing through links and URIs is a huge upgrade from stuff like voicemails or 
+mainframe applications, where servers have to keep track of where each user is in a navigation tree.<br />
+It also solves the issues of updating installed applications, because you reload the applications (or at least portions) with each request.</p>
+
+<p>So far, so good.</p>
+
+<h2 id="where-i-get-lost--applying-hateoas-to-services">Where I get lost : Applying HATEOAS to services</h2>
+
+<p>What I don’t understand is when I read that hypermedia <em>should</em> be applied to HTTP APIs to “lower coupling” 
+and make APIs more “evolvable”.</p>
+
+<p>Hypermedia is a great representation of <strong>choice</strong>.<br />
+We can argue a list of links  is more evolvable and extensible than this command line interface :</p>
+
+<blockquote>
+  <p>michaeltecourt$ mvn archetype:generate<br />
+[INFO] …<br />
+[INFO] Generating project in Interactive mode<br />
+[INFO] …<br />
+Choose archetype:<br />
+1: remote -&gt; am.ik.archetype:maven-reactjs-blank-archetype (Blank Project for React.js)<br />
+2: remote -&gt; am.ik.archetype:msgpack-rpc-jersey-blank-archetype (Blank Project for Spring Boot + Jersey)<br />
+3: remote -&gt; am.ik.archetype:mvc-1.0-blank-archetype (MVC 1.0 Blank Project)<br />
+4: remote -&gt; am.ik.archetype:spring-boot-blank-archetype (Blank Project for Spring Boot)<br />
+…</p>
+</blockquote>
+
+<p>The main reason most of us don’t use hypermedia for APIs is the same reason 
+we don’t use command line interfaces in <em>interactive mode</em> when scripting : 
+choice is for intelligent clients.</p>
+
+<h3 id="browser-vs-programmatic-client">Browser vs “Programmatic client”</h3>
+
+<p>I’ll call <em>programmatic client</em> an application coded to consume a remote service in a certain way.<br />
+The idea is to compare it with how a <em>browser</em> operates under your guidance.</p>
+
+<p>Unlike a human who truly discovers links with its eyes, thus removing the need for the browser to “understand” a page’s data, 
+a JSON response has to be interpreted by a machine who can only do what it’s coded for.<br />
+Programmatic clients are intrinsically coupled to a server by <em>what they call it for</em>. 
+You can fool yourself by pretending “clients can browse their way to a resource by following links from the entrypoint”, 
+the truth is that these programmatic clients will never wander further than what their source code says.<br />
+These clients will never <em>understand</em> new resources types, unless of course you bake some AI into it.</p>
+
+<ul>
+  <li>A web browser calls a server for a resource without expectations, and renders it for your eyes.<br />
+The web browser is decoupled from servers and data, it is only coupled to the media type (response format like HTML).<br />
+The web browser processes each resource within a given media type the same generic way.<br />
+<em>You</em> allow the browser to be decoupled because you can figure out the meaning of links on the fly.</li>
+  <li>A programmatic client calls a server for something <em>specific</em> inside a resource, 
+to do something specific with it, based on what it’s been coded for.<br />
+Business logic on clients is not <strong>driven</strong> by hypermedia, but by the client’s source code !<br />
+Hypermedia is not the engine here, it’s data.  <br />
+In the best case, links allow programmatic clients to “find out” relative URLs of services they had previous knowledge of : 
+less client-side configuration at the cost of more complexity.<br />
+In the worse case links are not used, as developers who write clients will hard code a direct call to a certain services, based on what they need.</li>
+</ul>
+
+<p>We lose our minds when we translate REST to JSON, let’s translate what we do with HTTP APIs to the good old web.<br />
+Applied to HTML, programmatic HTTP clients are similar to slurping a site’s content, 
+by fetching an HTML page using HTTP GET on its URI, then picking up a <code class="highlighter-rouge">div</code> element by name, and trying to parse its content. 
+That approach is a far cry from <em>how the web works</em>, no matter how you turn it.<br />
+Adding links won’t change the fact that clients expect precise elements in response messages, because they are coded for a finite number of things.</p>
+
+<p>One key constraint of REST is that your client should only understand the media type returned by the server, not the “content”. 
+For example, your browser does not understand what <a href="https://www.gleamfootball.com">gleamfootball.com</a> is about, 
+nor does Chrome break if a <code class="highlighter-rouge">div</code> element disappears from one request to the next. 
+If it’s valid HTML, the browser won’t break, no matter the content.<br />
+This is not true for our APIs. Our clients do have an understanding of which resource does what, 
+as they expect a field name <code class="highlighter-rouge">username</code> out of the <code class="highlighter-rouge">/user</code> resource, not just valid JSON.<br />
+I don’t see how to remove that “coupling”, because that coupling on data is exactly <em>why</em> you are consuming the resource in the first place.</p>
+
+<p><strong>Do we even need clients to be <em>more</em> decoupled from servers ?</strong><br />
+Let’s not lose sight of <a href="#where-we-at--rpc-over-http">where we at</a>, 
+~99% of us are just sharing remote service endpoints with other folks. Google does. 
+I use Google Maps’ API, and I don’t want to browse for the sake of browsing.<br />
+I want my code to call <em>this</em> precise service to obtain <em>that</em> piece of data I want : GPS coordinate out of an address. 
+I would argue that the service’s relative path <code class="highlighter-rouge">/maps/api/geocode/...</code> is a part of its signature, just like a method name in Java.</p>
+
+<h3 id="solving-the-api-versioning-issue">Solving the API versioning issue</h3>
+
+<p>I disagreed with Oliver Gierke on how hypermedia would solve the API versioning problem, 
+and tweets were too short to express myself.</p>
+
+<p>The API versioning drama came after <a href="https://www.infoq.com/articles/roy-fielding-on-versioning">this interview of Roy Fielding</a>. It made a lot of people cry.<br />
+At some point we were all religously adding something like <code class="highlighter-rouge">/api/v1</code> into our pretty URLs, and we felt it looked awseome, then Fielding said it was wrong. The internet’s daddy was slaying our sand castle.<br />
+Like everytime Fielding disagrees on something, few understand why, but everybody nods their head. 
+In Fielding’s view we should plan for change and design for decades, and that hypermedia solves the versioning problem. <em>(*)</em><br />
+Yes, hypermedia solves the problem when REST is used at the application level, not when HTTP is only used for data transport like we do.<br />
+When you visit the <a href="http://www.stackoverflow.com">stackoverflow.com</a>, the whole application (pages) are delivered through HTTP, not only the data. 
+If the guys at stackoverflow shipped a bug in the previous version of the site, all you have to do on the client side is reload the page. 
+The updated version of the site will still be HTML and the browser won’t break. 
+That’s why you don’t name it <em>stackoverflow.com/questions/v1</em>, 
+it does not make sense for HTML resources, clients send a request again and they are up to date.</p>
+
+<p>It does not apply to what we do with HTTP APIs, which are just a set of remote endpoints, consumed by clients with expectations on response content.<br />
+If you got it wrong the first time and need to make non backward-compatible changes to your remote service’s signature, it will break clients, 
+no matter if the change occurs in URLs, message format, media type or protocol. <br />
+A friend of mine often says that most programming issues are located “between the chair and the keyboard”. 
+The problem of versioning HTTP APIs, or any public API for that matter, falls in this category in my opinion.<br />
+No architecture or framework solves inadequate design.</p>
+
+<p>Adding links alone won’t solve the <strong>the root cause of most API versioning : ever-evolving data models consumed by third parties</strong>.<br />
+Even if you designed a complete modeling language out of your business model like <code class="highlighter-rouge">application/mybusiness+json</code>, 
+and used it as media type, your business object model probably evolves on a weekly/monthly basis, 
+unlike the HTML spec that serves a very generic purpose.<br />
+Congratulations, the versioning issue has been moved from URLs to media type !<br />
+REST won’t solve the issue, careful design <em>can</em> along with a profound understanding of the business.<br />
+Some highly generic use cases may be worth the price of being browsable : if a stable media type can be extracted out of the domain, 
+like atom for news, and if the API needs to be browsable by business requirement (not just developer fantasy), then you
+should probably go the extra hundred miles and build a specification for a RESTful client (browser), 
+by creating a <a href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">full fledged new “protocol”</a> :</p>
+
+<blockquote>
+  <p>A REST API should spend almost all of its descriptive effort in defining the media type(s) 
+used for representing resources and driving application state, 
+or in defining extended relation names and/or hypertext-enabled mark-up for existing standard media types.
+Any effort spent describing what methods to use on what URIs of interest 
+should be entirely defined within the scope of the processing rules 
+for a media type (and, in most cases, already defined by existing media types)</p>
+</blockquote>
+
+<p>In other less-precise words, when building a browsable API, you should thoroughly describe your new media type because 
+it is mostly the only thing your browser (client) knows how to deal with, along with lower level protocols.<br />
+Good luck with that. I have yet to see (or recognize) a case where the business warrants such an effort.<br />
+My conviction is that browsing requires some degree of intelligence, whether it’s artificial or yours. 
+So far the only relevant RESTful machine-to-machine interaction I can think of is what search engines do by crawling the web.</p>
+
+<p>When it comes to user-facing applications though, if you want zero coupling with the server, 
+the 100% RESTful solution stands right before your eyes.</p>
+
+<h2 id="how-to-make-an-api-restful-then-">How to make an API RESTful then ?</h2>
+
+<p>If you want to lower coupling between your end-user application and server, 
+remove client-side intelligence altogether by making it a browser.<br />
+To remove all coupling with any business-related model suceptible to change, 
+the server should directly respond with view representation and actions embedded as hypermedia, 
+instead of only data representation. 
+And unless you have a plan to reinvent a “view modeling language”, use HTML so your client is just… 
+a web browser… which makes your server application a web site.<br />
+We got back to where we came from, if you want pure REST, and the lowest client/server coupling ever, go back to the good old web.<br />
+In my opnion, <a href="/2015/09/25/mobile-apps-madness.html">a lot of mobile applications</a> are technically a regression from REST, 
+in the sense that they could be only web applications, but that’s another story.<br />
+Even within a RESTful web site, <a href="http://whatisrest.com/rest_constraints/code_on_demand">code-on-demand</a> (JavaScript) can make RPC calls to servers.<br />
+RPC is not bad in itself, bad design is. Get over the fact that you are not RESTful everywhere.<br />
+Embrace your RPCness and design APIs carefuly with your fellow programmer in mind.<br />
+At this point we are all doing RPC the same way with JSON over HTTP, and I think it’s already wonderful that we got there.</p>
+
+<p>Is REST really the next level of APIs ? I don’t know, why are we not using CLI interactive mode when scripting ?<br />
+All I know is that it would require much more than hypermedia from servers, 
+clients would need to be a hell of a lot smarter too. Not only about following links, also in the way they process resources : 
+maybe learning concepts instead of relying on pre-defined fields.</p>
+
+<p>Oddly enough, my opinion has already been addressed by Fielding in typical fashion :</p>
+
+<blockquote>
+  <p>Roy: I talk about it because the initial reaction to using REST for machine-to-machine interaction is almost always of the form 
+“we don’t see a reason to bother with hypermedia — 
+it just slows down the interactions, as opposed to the client knowing directly what to send.” 
+The rationale behind decoupling for evolvability is simply not apparent to developers who 
+think they are working towards a modest goal, like “works next week” or “we’ll fix it in the next release”.</p>
+
+  <p>If developers can conceive of their systems being used for a much longer time, 
+then we can escape their own preconceptions about how it will need to change over time. 
+We can then work back from decades to years (how long until you don’t know your users?) 
+or even months (how long until you’ve lost control over client deployment?).</p>
+</blockquote>
+
+<p>… I’ll just go with the rest of the internet on this one, and nod my head in silence like I get it.</p>
+
+<p>And if you want to do RPC and pretend it’s REST… I’ll call it the 
+<em><a href="https://en.wikipedia.org/wiki/Milk_and_meat_in_Jewish_law">kosher</a> 
+bacon-cheeseburger dilemma</em> : some constraints make some concepts incompatible with others.</p>
+
+<hr />
+
+<p><em>(*) On a sidenote : the most concrete tip I could extract out of Fielding’s <a href="https://www.infoq.com/articles/roy-fielding-on-versioning">interview</a> is that if you do need to break backward-compatibility, 
+ship the application as a new one, and put a version number in the hostname instead of adding weight to each relative path “just in case”. Seems legit.</em></p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Michael Tecourt</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Michael Tecourt</li>
+          <li><a href="mailto:"></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/michaeltecourt">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">michaeltecourt</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/michaeltecourt">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">michaeltecourt</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Keep it simple, no-nonsense.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

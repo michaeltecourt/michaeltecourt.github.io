@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>HTTP APIs and REST</title>
-    <meta name="description" content="Yet another programmer with love for his job.
+    <meta name="description" content="Keep it simple, no-nonsense.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
@@ -21,7 +21,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/">Michael "ako" Tecourt</a>
+    <a class="site-title" href="/">Michael Tecourt</a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -62,63 +62,165 @@
   </header>
 
   <article class="post-content">
-    <p>Yet another blog post about what REST is.	</p>
+    <p>Yet another blog post about what REST is.</p>
 
-<h2 id="rest-is-synonym-for-browseable">REST is synonym for “browseable”</h2>
+<p>Dr. Fielding you would have done us a huge favor by clarifying things earlier.</p>
 
-<p>Everyone already has a REST API in their website.<br />
+<h2 id="misconceptions">Misconceptions</h2>
+
+<p>Most people understand REST as being :</p>
+
+<ul>
+  <li>Pretty URIs</li>
+  <li>Using HTTP verbs to name “CRUD” operations</li>
+  <li>Having a one-to-one mapping between data object and HTTP resource</li>
+  <li>Using JSON as a media type</li>
+</ul>
+
+<p>False.</p>
+
+<h2 id="a-tiny-bit-of-history">A tiny bit of history</h2>
+
+<p>What we are doing right now is RPC over HTTP, using JSON as data format. 
+Why ? because in programming, like mostly everywhere else in the history of mankind, easiness of use has always won. 
+After being considered a joke for a while, JavaScript started trending in the mid-to-late 2000s. 
+SOAP was all the rage in the back-end world, and so did AJAX on the client side.</p>
+
+<p>SOAP was pretty cool considered what came before. 
+Before that, Object Oriented Programming was quite something, 
+and OO guys were pretty good at making simple things a lot more complicated than it should : 
+instead of calling an endpoint on a remote server, why not pretend the network does not exist, and try to distribute objects ?
+Long story short, “Everything Object” failed.
+XML was declared the cornerstone of interoperability by enterprise consortiums, and SOAP was built on top of it.<br />
+SOAP was basically “how to call a web server through HTTP POSTs, using a specific XML schema as a message structure”.
+Because the enterprise world likes predictability, each service comes with a WSDL that describes its interface.</p>
+
+<p>Service Oriented Architecture was buzzing, and we needed a way to consume those “web services” 
+directly from “rich client applications”.
+In fact, these heavy ass JavaScript pages made sense at the time : everybody did not have huge bandwidth, 
+and the more we could put on the client side, the less we had to reload pages, which lead to better user experience.</p>
+
+<p>The problem was that calling SOAP service was made easier by frameworks on the server side (Java, .Net, etc), 
+but JavaScript guys could not parse XML as easily as Java guys generated classes. 
+When you see how much hacking JS needed to work the same way on every browser, 
+you can understand that JS developers did NOT have time to mess around with verbose XML messages. 
+They tried <a href="https://en.wikipedia.org/wiki/JSON-RPC">JSON-RPC</a> and then figured out they  could  do even simpler.</p>
+
+<p>The fracture between the enterprise world and the web world started gaping. 
+Web guys made the most of out of XHR HTTP Requests, and the easier data format they had, JSON, which happened to be pretty lightweight.</p>
+
+<p>It seems to me that’s when the “public consciousness” realized that HTTP was already an application level protocol. 
+People started figuring out that we don’t need another application-level protocol for the messages exchanged, 
+we could just pour data directly in HTTP requests/response payloads.</p>
+
+<p>That’s just what it is, we needed remote services, and it happened that HTTP was now everywhere thanks to the web. 
+As a bonus, it was firewall and proxy friendly. Those who deployed Java EJBs using RMI know the struggle.</p>
+
+<p>Bottom line, the only thing people needed was calling remote services, both from javascript at the browser level, 
+and from server-side applications. 
+HTTP happened to be there for a while and easy to use.</p>
+
+<p>And then came up the word REST. I don’t know who in the world dug out Roy Fielding 
+<a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">thesis</a>. 
+That thing had been around since 2000, yet the word went mainstream only in the mid 2000s or so !</p>
+
+<p>Although we commonly call REST is a plain misunderstanding of what the acronym really means, 
+it had the benefit of providing some kind of common way to structure an HTTP API.</p>
+
+<p>But what the hell is REST ?</p>
+
+<h2 id="representational-state-transfer-or-the-art-of-giving-complex-names-to-simple-principles">Representational State Transfer, or the art of giving complex names to simple principles</h2>
+
+<p>Let’s summarize it simply, once and for all : REST is a synonym for <strong>browseable</strong>.</p>
+
+<p>Everyone already has a REST API in their good old website.<br />
 Most chances are, your website is truly RESTful while your application programming interface is not.</p>
 
-<p>All the constraints, details and nitpicking that will follow don’t matter. REST is just an abstraction over “how the web works”, 
-how your browser interacts with a web server.</p>
+<p>REST is just an abstraction over “how the web works”, 
+how a browser interacts with a web server.<br />
+All the constraints, details and nitpicking that will follow are corollaries.</p>
+
+<p>“Explaining people how to achieve browseable applications” sounds a lot less sexy than “Representational state transfer”.<br />
+As we all know <a href="http://martinfowler.com/bliki/TwoHardThings.html">naming things</a> is one of the hardest things in programming, 
+that’s why finding such a catchy name might already be worthy of a PhD by itself.</p>
+
+<p>Let’s break down the major constraints of REST, trying to make light of what they really mean in the process.</p>
 
 <p>If your client needs to <em>understand</em> anything more than the resource format, it ain’t REST.<br />
-Why ? because the motherf**ker will go down any time you alter some resource characteristics.<br />
+Why ? because the client will go down any time you alter some resource characteristics.<br />
 Does you browser break down when I change HTML tags on my blog’s page ? 
 No, because your browser just understands well formatted HTML.
-Same goes for atom readers, if an article changes the reader won’t break down unless the resource is made of some invalid XML.
+Same goes for atom readers, if an article changes the RSS reader won’t break down unless the resource is made of some invalid XML.
 See the trend ? If the server sends back some resource with the correct format, then your client should not break.</p>
+
+<p>With ATOM and HTML, it’s easy to build a REST client (browser), as the media type is targeted toward an end user. 
+As a human, you need your browser to format HTML and you can understand what’s going on. 
+For DATA, unless your client has some machine learning A.I. $h1t going on, like a crawler, REST is NO USE !</p>
 
 <p><em>And how can I do that for my API ?</em> Dude you probably can’t, unless you extract some kind of abstraction over your data model 
 and make it a full fledged media type. And why the hell would you want to do that ? 
 you’re probably doing RPC calls, and no one will blame you for that.</p>
 
+<p>Unlike when you click on links to discover new pages, 
+your client applications certainly cannot LEARN about new endpoints, 
+as they can only understand what they have been coded for.<br />
+REST is mostly pointless for machine-to-machine interactions, it was designed for human-to-remote-machine interactions !<br />
+I’ll repeat it again : REST is the set of abstract constraints over how websites work !
+Unless you are building some kind of AI or crawler like Google, 
+which is not what most people are doing, you don’t need HATEOAS. 
+All you need is a predetermined and well documented set of endpoints, 
+that can provide functions to remote clients. 
+Nobody will wander around and browse your corporate Product Management API like they browse 9gag.<br />
+Unless, of course, “browseability” is a feature of your application.</p>
+
 <p>To understand why REST was such a major step forward in the way we built applications, 
 you have to understand the context it was created in, and the needs it answered.</p>
 
 <p>The <em>hypermedia as the engine of application state</em> thing looks like a detail from now, 
-but you have to remember that before the web network-based applications were built like your voicemail : 
-The server had to track <em>state</em> of where the client was in the navigation tree, to propose him options (or views).
-Imagine the scalability issues if each of your apps had to store <em>which page each user is currently browsing</em> !</p>
+but you have to remember that before the web, network-based applications were built like your voicemail : 
+The server had to track <em>state</em> of where the client was in the navigation tree, to propose him option menus (or views).</p>
 
-<p>Hyperlinks and URLs solved that. And the funny thing is, native mobile applications are technically a regression from REST.</p>
+<p>Hyperlinks and URLs solved that. 
+It also solves the complexity of building a desktop application :</p>
+
+<ul>
+  <li>No need to manually code all the transitions between views</li>
+  <li>No need to store and handle client side state</li>
+  <li>No need to keep track of all the distributed versions of the app, since clients get the new version of the application (pages) every time.</li>
+</ul>
+
+<p>The funny thing is, most mobile applications are technically a regression from REST.<br />
+We don’t need most of the mobile apps we can find on stores, but that’s <a href="/2015/09/25/mobile-apps-madness.html">another story</a>.
+They’re just installed applications enhanced for small touch screen. 
+Everytime you install an app from the app store, try to picture the old windows installer.</p>
 
 <p>You can set up a RESTful architecture without HTTP and pretty URIs.<br />
-In fact, REST does not require HTTP. We can see the modern web as the reference implementation of REST, HTTP being the application protocol behind it.  </p>
+In fact, REST does not require HTTP. We can see the web as the reference implementation of REST, 
+HTTP being the application protocol behind it, and HTML the principal media-type understood by clients.<br />
+I thought about building a RESTful protocol from mainframe apps when working for a bank, 
+but in the end I would have just made something worse than HTTP and HTML.</p>
 
-<p>You could build RESTful applications over mainframe servers and IBM proprietary protocols, if you’re into that.</p>
+<p>The web is the world of interconnected resources. 
+That’s why Dr. Fielding says there’s no such thing as a web service : 
+if your service is just an HTTP endpoint, it is not a <em>web</em> service, rather an HTTP service.</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></div>
+<h2 id="the-kosher-bacon-cheeseburger-paradox">The Kosher Bacon-Cheeseburger Paradox</h2>
+<p>REST has a number of key constraints that Dr. Roy T. Fielding summed up in an academic (douchy?) manner.</p>
 
-<h2 id="kosher-double-cheese-with-bacon">Kosher double cheese with bacon</h2>
-<p>REST has a number of key constraints that Dr. Roy T. Fielding summed up a academic (douchy?) manner.</p>
-
-<p>A parallel with kosher would be : </p>
+<p>Most religions also have constraints. Here are the constraints of Kosher food :</p>
 
 <ul>
   <li>If it’s pork, it ain’t kosher</li>
   <li>If you mix meat and milk, it ain’t kosher</li>
 </ul>
 
-<p>Therefore, trying to build a RESTful RPC service is like trying to make a kosher double cheese with pork bacon : you can’t.</p>
+<p>Trying to build a RESTful RPC service is like trying to make a kosher cheeseburger with (pork) bacon : you can’t.</p>
 
-<p>You can make it look like a bacon hamburger with turkey bacon.<br />
-You can make it look like a crappy cheeseburger with soy cheese.<br />
-In the end you can’t make anything kosher with beef, cheese and pork at the same time.</p>
+<ul>
+  <li>You can make it look like a bacon hamburger with turkey bacon.</li>
+  <li>You can make it look like a crappy cheeseburger with soy cheese.</li>
+  <li>In the end you can’t make anything kosher with beef, cheese and pork at the same time.</li>
+</ul>
 
 <p>Same goes for REST:</p>
 
@@ -126,6 +228,18 @@ In the end you can’t make anything kosher with beef, cheese and pork at the sa
   <li>If you break your client by making changes that are still valid within your media type, it ain’t REST</li>
   <li>If you break your client by changing some resource URLs, it ain’t REST</li>
 </ul>
+
+<p>The truth is, when you build an HTTP API, your client has <em>expectations</em> on 
+both <em>where</em> to find your service, and <em>what</em> it will responds.
+That’s perfectly normal, since you’re technically doing RPC : 
+the client needs a well defined functionality from your app. 
+He calls a remote function passing in some data, and he gets the data he needs in return. 
+That expectation of calling a precise function at a given address is precisely “unrestful”. 
+Compare it to how you browse a website. 
+You don’t know each URL of your favorite meme site, and if one of the pages change it’s fine, 
+because unless you bookmarked it you will find it from the site entry point, the main page.<br />
+That’s really what hypermedia is about. 
+Returning the URL of your service to somebody who already knows it from your documentation isn’t worth the trouble.</p>
 
 <p>HAL is trying to fix a problem very few people actually need to solve : 
 why the hell would you put extra effort to make your API RESTish with hyperlinks no-one will follow, 
@@ -147,13 +261,13 @@ the web guys found a solution that was standing right before our eyes with plain
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">Michael "ako" Tecourt</h2>
+    <h2 class="footer-heading">Michael Tecourt</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
-          <li>Michael "ako" Tecourt</li>
-          <li><a href="mailto:michael@tecourt.com">michael@tecourt.com</a></li>
+          <li>Michael Tecourt</li>
+          <li><a href="mailto:"></a></li>
         </ul>
       </div>
 
@@ -174,11 +288,24 @@ the web guys found a solution that was standing right before our eyes with plain
           
 
           
+          <li>
+            <a href="https://twitter.com/michaeltecourt">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">michaeltecourt</span>
+            </a>
+          </li>
+          
         </ul>
       </div>
 
       <div class="footer-col  footer-col-3">
-        <p class="text">Yet another programmer with love for his job.
+        <p class="text">Keep it simple, no-nonsense.
 </p>
       </div>
     </div>
