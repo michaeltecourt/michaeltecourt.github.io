@@ -3,6 +3,7 @@ layout: post
 title:  "Mobile apps madness"
 date:   2015-09-25 20:00:00
 categories: 
+comments: true
 ---
 
 I often hear colleagues and family speak about how big bad internet companies collect their data.  

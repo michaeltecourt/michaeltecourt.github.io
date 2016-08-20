@@ -3,6 +3,7 @@ layout: post
 title:  "HTTP APIs and Hypermedia"
 date:   2016-08-08 00:00:00
 categories: 
+comments: true
 ---
 
 I have been trying to finish this blog post forever, and the motivation was sparked by a [tweet from Spring's Oliver Gierke](https://twitter.com/olivergierke/status/761860716169162752), thanks a lot !

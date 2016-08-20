@@ -3,6 +3,7 @@ layout: post
 title:  "Service Discovery and the forgotten URNs"
 date:   2016-07-16 00:00:00
 categories: 
+comments: true
 ---
 
 I like using Spring Boot / Cloud a lot. I won't dig too much into it, it's [2016](http://zeroturnaround.com/rebellabs/java-tools-and-technologies-landscape-2016-trends) 
@@ -67,6 +68,6 @@ Some governments agencies use URNs as unique identifiers, not very popular outsi
 
 URNs and service discovery/client side load balancing made a lot of sense to me.  
 A lot more sense than [inserting links that clients can't browse in API responses](https://spring.io/guides/gs/rest-hateoas/) (which most believe to be HATEOAS) : 
-a waste of time when doing RPC over HTTP (which most believe to be REST)... but I'll leave that for another blog post.
+a waste of time when doing RPC over HTTP (which most believe to be REST)... but I'll leave that for [another blog post](/2016/08/08/http-apis-and-hypermedia.html).
 
 
