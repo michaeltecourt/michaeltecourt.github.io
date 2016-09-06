@@ -130,7 +130,7 @@ that’s why finding such a catchy name might already be worthy of a PhD by itse
 <p>For some reason, ever since JSON/HTTP services became popular, web developers have wanted it to be REST.<br />
 Like if REST was an instant proof of good design or something. Roy Fielding never 
 stated that RPC was <em>bad</em>, he said it was not REST (don’t piss off the guy by using the term incorrectly, 
-or he will shower you in with academic jargon).</p>
+or he will shower you with academic jargon).</p>
 
 <h2 id="hateoas">HATEOAS</h2>
 
@@ -160,18 +160,18 @@ and make APIs more “evolvable”.</p>
 <p>Hypermedia is a great representation of <strong>choice</strong>.<br />
 We can argue a list of links  is more evolvable and extensible than this command line interface :</p>
 
-<blockquote>
-  <p>michaeltecourt$ mvn archetype:generate<br />
-[INFO] …<br />
-[INFO] Generating project in Interactive mode<br />
-[INFO] …<br />
-Choose archetype:<br />
-1: remote -&gt; am.ik.archetype:maven-reactjs-blank-archetype (Blank Project for React.js)<br />
-2: remote -&gt; am.ik.archetype:msgpack-rpc-jersey-blank-archetype (Blank Project for Spring Boot + Jersey)<br />
-3: remote -&gt; am.ik.archetype:mvc-1.0-blank-archetype (MVC 1.0 Blank Project)<br />
-4: remote -&gt; am.ik.archetype:spring-boot-blank-archetype (Blank Project for Spring Boot)<br />
-…</p>
-</blockquote>
+<div class="highlighter-rouge"><pre class="highlight"><code>michaeltecourt$ mvn archetype:generate  
+[INFO] ...  
+[INFO] Generating project in Interactive mode  
+[INFO] ...  
+Choose archetype:  
+1: remote -&gt; am.ik.archetype:maven-reactjs-blank-archetype (Blank Project for React.js)  
+2: remote -&gt; am.ik.archetype:msgpack-rpc-jersey-blank-archetype (Blank Project for Spring Boot + Jersey)  
+3: remote -&gt; am.ik.archetype:mvc-1.0-blank-archetype (MVC 1.0 Blank Project)  
+4: remote -&gt; am.ik.archetype:spring-boot-blank-archetype (Blank Project for Spring Boot)  
+...  
+</code></pre>
+</div>
 
 <p>The main reason most of us don’t use hypermedia for APIs is the same reason 
 we don’t use command line interfaces in <em>interactive mode</em> when scripting : 

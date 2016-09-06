@@ -73,7 +73,7 @@ As [per Fielding himself](https://www.infoq.com/articles/roy-fielding-on-version
 For some reason, ever since JSON/HTTP services became popular, web developers have wanted it to be REST.  
 Like if REST was an instant proof of good design or something. Roy Fielding never 
 stated that RPC was _bad_, he said it was not REST (don't piss off the guy by using the term incorrectly, 
-or he will shower you in with academic jargon).
+or he will shower you with academic jargon).
 
 ## HATEOAS
 
@@ -103,16 +103,16 @@ and make APIs more "evolvable".
 Hypermedia is a great representation of **choice**.  
 We can argue a list of links  is more evolvable and extensible than this command line interface : 
 
- > michaeltecourt$ mvn archetype:generate  
- > [INFO] ...  
- > [INFO] Generating project in Interactive mode  
- > [INFO] ...  
- > Choose archetype:  
- > 1: remote -> am.ik.archetype:maven-reactjs-blank-archetype (Blank Project for React.js)  
- > 2: remote -> am.ik.archetype:msgpack-rpc-jersey-blank-archetype (Blank Project for Spring Boot + Jersey)  
- > 3: remote -> am.ik.archetype:mvc-1.0-blank-archetype (MVC 1.0 Blank Project)  
- > 4: remote -> am.ik.archetype:spring-boot-blank-archetype (Blank Project for Spring Boot)  
- > ...  
+    michaeltecourt$ mvn archetype:generate  
+    [INFO] ...  
+    [INFO] Generating project in Interactive mode  
+    [INFO] ...  
+    Choose archetype:  
+    1: remote -> am.ik.archetype:maven-reactjs-blank-archetype (Blank Project for React.js)  
+    2: remote -> am.ik.archetype:msgpack-rpc-jersey-blank-archetype (Blank Project for Spring Boot + Jersey)  
+    3: remote -> am.ik.archetype:mvc-1.0-blank-archetype (MVC 1.0 Blank Project)  
+    4: remote -> am.ik.archetype:spring-boot-blank-archetype (Blank Project for Spring Boot)  
+    ...  
 
 The main reason most of us don't use hypermedia for APIs is the same reason 
 we don't use command line interfaces in _interactive mode_ when scripting : 
