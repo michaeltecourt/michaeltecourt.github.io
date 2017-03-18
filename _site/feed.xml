@@ -4,10 +4,10 @@
     <title>Michael Tecourt</title>
     <description>Keep it simple, no-nonsense.
 </description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 14 Feb 2017 17:50:28 +0100</pubDate>
-    <lastBuildDate>Tue, 14 Feb 2017 17:50:28 +0100</lastBuildDate>
+    <link>http://michaeltecourt.github.io/</link>
+    <atom:link href="http://michaeltecourt.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sat, 18 Mar 2017 02:59:38 +0100</pubDate>
+    <lastBuildDate>Sat, 18 Mar 2017 02:59:38 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -275,8 +275,8 @@ bacon-cheeseburger dilemma&lt;/em&gt; : some constraints make some concepts inco
 ship the application as a new one, and put a version number in the hostname instead of adding weight to each relative path “just in case”. Seems legit.&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 08 Aug 2016 02:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/2016/08/08/http-apis-and-hypermedia.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/08/08/http-apis-and-hypermedia.html</guid>
+        <link>http://michaeltecourt.github.io/2016/08/08/http-apis-and-hypermedia.html</link>
+        <guid isPermaLink="true">http://michaeltecourt.github.io/2016/08/08/http-apis-and-hypermedia.html</guid>
         
         
       </item>
@@ -498,8 +498,8 @@ The UML guys had the diagram thing covered for two decades. If UML is overkill, 
 &lt;p&gt;And if you should only remember one thing out of this : &lt;strong&gt;Don’t mix structure and behavior together on one diagram.&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 06 Aug 2016 02:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/2016/08/06/y-u-no-use-uml.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/08/06/y-u-no-use-uml.html</guid>
+        <link>http://michaeltecourt.github.io/2016/08/06/y-u-no-use-uml.html</link>
+        <guid isPermaLink="true">http://michaeltecourt.github.io/2016/08/06/y-u-no-use-uml.html</guid>
         
         
       </item>
@@ -578,8 +578,8 @@ a waste of time when doing RPC over HTTP (which most believe to be REST)… but 
 
 </description>
         <pubDate>Sat, 16 Jul 2016 02:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/2016/07/16/service-discovery-and-the-forgotten-urn.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/07/16/service-discovery-and-the-forgotten-urn.html</guid>
+        <link>http://michaeltecourt.github.io/2016/07/16/service-discovery-and-the-forgotten-urn.html</link>
+        <guid isPermaLink="true">http://michaeltecourt.github.io/2016/07/16/service-discovery-and-the-forgotten-urn.html</guid>
         
         
       </item>
@@ -648,8 +648,8 @@ because you can multiply zero with everything you want it’s still 0 (yup, he i
 &lt;p&gt;See ? Now that I have it all figured out with majestuous modesty, I &lt;em&gt;should&lt;/em&gt; proceed to write something highly impressive… but it would be too much for today :)&lt;/p&gt;
 </description>
         <pubDate>Thu, 14 Jul 2016 02:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/2016/07/14/overcoming-procrastination.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2016/07/14/overcoming-procrastination.html</guid>
+        <link>http://michaeltecourt.github.io/2016/07/14/overcoming-procrastination.html</link>
+        <guid isPermaLink="true">http://michaeltecourt.github.io/2016/07/14/overcoming-procrastination.html</guid>
         
         
       </item>
@@ -717,8 +717,8 @@ Does that cool looking icon in the app store really makes you lose your mind ?&l
 let’s not shoot ourserlves in the foot by opening more doors than necessary.&lt;/p&gt;
 </description>
         <pubDate>Fri, 25 Sep 2015 22:00:00 +0200</pubDate>
-        <link>http://yourdomain.com/2015/09/25/mobile-apps-madness.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2015/09/25/mobile-apps-madness.html</guid>
+        <link>http://michaeltecourt.github.io/2015/09/25/mobile-apps-madness.html</link>
+        <guid isPermaLink="true">http://michaeltecourt.github.io/2015/09/25/mobile-apps-madness.html</guid>
         
         
       </item>
@@ -730,8 +730,8 @@ let’s not shoot ourserlves in the foot by opening more doors than necessary.&l
 &lt;p&gt;Well that’s all I have to say for my first post.&lt;/p&gt;
 </description>
         <pubDate>Tue, 22 Sep 2015 00:56:00 +0200</pubDate>
-        <link>http://yourdomain.com/2015/09/22/first-one.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2015/09/22/first-one.html</guid>
+        <link>http://michaeltecourt.github.io/2015/09/22/first-one.html</link>
+        <guid isPermaLink="true">http://michaeltecourt.github.io/2015/09/22/first-one.html</guid>
         
         
       </item>
