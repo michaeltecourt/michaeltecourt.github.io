@@ -1,2 +1,4 @@
 # michaeltecourt.github.io
-Some GitHub pages about me
+
+* [Blog](https://michaeltecourt.github.io)
+* [About me](https://michaeltecourt.github.io/about)
