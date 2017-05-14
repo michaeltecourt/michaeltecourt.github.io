@@ -6,9 +6,115 @@
 </description>
     <link>http://michaeltecourt.github.io/</link>
     <atom:link href="http://michaeltecourt.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 18 Mar 2017 02:59:38 +0100</pubDate>
-    <lastBuildDate>Sat, 18 Mar 2017 02:59:38 +0100</lastBuildDate>
+    <pubDate>Sun, 14 May 2017 22:57:00 +0200</pubDate>
+    <lastBuildDate>Sun, 14 May 2017 22:57:00 +0200</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Introducing Cereebro</title>
+        <description>&lt;h1 id=&quot;cereebrohttpsrawgithubusercontentcomcereebrocereebrogithubiomasterimagescereebropng&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/cereebro/cereebro.github.io/master/images/cereebro.png&quot; alt=&quot;Cereebro&quot; /&gt;&lt;/h1&gt;
+
+&lt;p&gt;I’m proud to introduce version 1.0.0 of project &lt;a href=&quot;http://cereebro.io&quot;&gt;Cereebro&lt;/a&gt; !&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-it-&quot;&gt;What is it ?&lt;/h2&gt;
+
+&lt;p&gt;Keeping software documentation is an ageless problem. At the age of micro-services, it’s easy to get lost within a distributed system, even if you designed it.&lt;/p&gt;
+
+&lt;p&gt;Cereebro automatically builds a &lt;a href=&quot;http://sample.cereebro.io&quot;&gt;map&lt;/a&gt; of a distributed system.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/cereebro-sample-screenshot.png&quot; alt=&quot;cereebro-sample-screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;why-&quot;&gt;Why ?&lt;/h2&gt;
+
+&lt;p&gt;Cereebro was born because of a strong motivation : laziness.&lt;/p&gt;
+
+&lt;p&gt;Working as a technical lead for the Lab (experimental) team at &lt;a href=&quot;http://edelia.fr&quot;&gt;edelia&lt;/a&gt; (EDF group) is pretty fun. 
+We have more room than others team to make technical decisions, although at some point we may be asked to “do our chores” and follow part of the process like the others do.&lt;br /&gt;
+This is how I ended up being asked by the centralized architecture team to provide them a list of all the micro-services built by our team, and the dependencies among them. 
+Instead of taking a couple hours to fill an excel sheet, I asked for a small delay in order to build a tool that would do it at permanently without risking any mistake.&lt;br /&gt;
+CTO Dominique Vienne granted us that delay, and my colleague &lt;a href=&quot;https://github.com/lucwarrot&quot;&gt;Luc Warrot&lt;/a&gt; was easily convinced by the idea of solving a boring task with open source code.&lt;/p&gt;
+
+&lt;p&gt;The name Cereebro came when I started working on the project and saw X-Men on TV. 
+Charles Xavier was finding mutant with Cerebro the same way I wanted to find micro-services in our system.&lt;br /&gt;
+It was also consistent with the movie references that the Netflix team uses for their open-source tools (Zuul, etc…).&lt;br /&gt;
+Note that &lt;em&gt;cerebro&lt;/em&gt; means &lt;em&gt;brain&lt;/em&gt; in spanish, and actually it shouldn’t be pronounced &lt;em&gt;cereebro&lt;/em&gt; like americans do… cerebro.io wasn’t availble though !&lt;/p&gt;
+
+&lt;p&gt;After a couple weeks coding on the way home (and late at night) we had a working prototype and decided to stuff more features before release 1.0.0.
+Although I severely underestimated how long the polishing part would take, I’m glad we made it production ready.&lt;/p&gt;
+
+&lt;p&gt;It was our first open source project, and it’s already a great satisfaction to receive positive feedback from the community.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;fr&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/michaeltecourt&quot;&gt;@michaeltecourt&lt;/a&gt; &lt;a href=&quot;https://twitter.com/springboot&quot;&gt;@springboot&lt;/a&gt; &lt;a href=&quot;https://twitter.com/springcloud&quot;&gt;@springcloud&lt;/a&gt; &lt;a href=&quot;https://twitter.com/NetflixOSS&quot;&gt;@NetflixOSS&lt;/a&gt; Thanks for your work, Cereebro is what i&amp;#39;m looking for long time to have a dynamic view for micro services dependencies.&lt;/p&gt;&amp;mdash; Philippe Da Costa (@dacofr) &lt;a href=&quot;https://twitter.com/dacofr/status/862560489288613889&quot;&gt;11 mai 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;We hope Cereebro will be as useful to you as it is for us.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-&quot;&gt;How ?&lt;/h2&gt;
+
+&lt;p&gt;We found all the pieces within the Spring eco-system :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the Spring Context contains mostly everything you need to detect an application’s dependencies, it was just a matter of analyzing beans&lt;/li&gt;
+  &lt;li&gt;Spring Boot and &lt;code class=&quot;highlighter-rouge&quot;&gt;@Conditional&lt;/code&gt; annotations made our relationship detectors elegant and lightweight&lt;/li&gt;
+  &lt;li&gt;Spring Cloud and Netflix OSS gave us a central registry of all applications running in the system, and also a centralized place to publish the relationships we detected between those apps&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Take a couple minutes to see how to &lt;a href=&quot;https://github.com/cereebro/cereebro/wiki/Using-Cereebro-with-Spring-Cloud-Netflix-and-the-Eureka-Server&quot;&gt;get started&lt;/a&gt;, or find an even quicker summary below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cereebro.github.io/images/cereebro-eureka.png&quot; alt=&quot;cereebro-eureka-component-diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cereebro-snitch&quot;&gt;Cereebro Snitch&lt;/h3&gt;
+
+&lt;p&gt;Add the Cereebro Snitch Spring Boot Starter to each of your applications in order to detect their relationships with other components :&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;io.cereebro&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;cereebro-snitch-spring-boot-starter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;cereebro-server&quot;&gt;Cereebro Server&lt;/h3&gt;
+
+&lt;p&gt;Create a Cereebro Server that will build a complete graph out of all the info snitched by applications :&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;io.cereebro&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;cereebro-server-spring-boot-starter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.cloud&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-cloud-starter-eureka&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Add &lt;code class=&quot;highlighter-rouge&quot;&gt;@EnableCereebroServer&lt;/code&gt; somewhere on your configuration classes :&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@EnableCereebroServer&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CereebroServerEurekaClientApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;learn-more&quot;&gt;Learn more&lt;/h2&gt;
+
+&lt;p&gt;Visit &lt;a href=&quot;http://cereebro.io&quot;&gt;Cereebro.io&lt;/a&gt; to find the &lt;a href=&quot;http://cereebro.io&quot;&gt;source code&lt;/a&gt; (Apache 2.0 License), 
+how to &lt;a href=&quot;https://github.com/cereebro/cereebro/wiki/Using-Cereebro-with-Spring-Cloud-Netflix-and-the-Eureka-Server&quot;&gt;get started&lt;/a&gt;, 
+check out &lt;a href=&quot;https://github.com/cereebro/cereebro-samples&quot;&gt;samples&lt;/a&gt; and watch a &lt;a href=&quot;http://sample.cereebro.io&quot;&gt;live demo&lt;/a&gt;, 
+or read the detailed &lt;a href=&quot;http://docs.cereebro.io&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Cereebro releases are available on &lt;a href=&quot;http://repo1.maven.org/maven2/io/cereebro/&quot;&gt;maven central&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 14 May 2017 02:00:00 +0200</pubDate>
+        <link>http://michaeltecourt.github.io/2017/05/14/introducing-cereebro.html</link>
+        <guid isPermaLink="true">http://michaeltecourt.github.io/2017/05/14/introducing-cereebro.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>HTTP APIs and Hypermedia</title>
