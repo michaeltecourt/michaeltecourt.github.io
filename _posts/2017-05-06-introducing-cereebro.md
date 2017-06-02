@@ -24,12 +24,12 @@ Cereebro was born because of a strong motivation : laziness.
 
 Working as a technical lead for the Lab (experimental) team at [edelia](http://edelia.fr) (EDF group) is pretty fun. 
 We have more room than others team to make technical decisions, although at some point we may be asked to "do our chores" and follow part of the process like the others do.  
-This is how I ended up being asked by the centralized architecture team to provide them a list of all the micro-services built by our team, and the dependencies among them. 
-Instead of taking a couple hours to fill an excel sheet, I asked for a small delay in order to build a tool that would do it at permanently without risking any mistake.  
+This is how I ended up being asked by the architecture team to maintain a list of all the micro-services built by our team, and the dependencies among them. 
+Instead of taking a couple hours to fill an excel sheet, I asked for a small delay in order to build a tool that would do it permanently without risking any mistake.  
 CTO Dominique Vienne granted us that delay, and my colleague [Luc Warrot](https://github.com/lucwarrot) was easily convinced by the idea of solving a boring task with open source code.
 
 The name Cereebro came when I started working on the project and saw X-Men on TV. 
-Charles Xavier was finding mutant with Cerebro the same way I wanted to find micro-services in our system.  
+Charles Xavier was finding mutants with Cerebro the same way I wanted to find micro-services in our system.  
 It was also consistent with the movie references that the Netflix team uses for their open-source tools (Zuul, etc...).  
 Note that _cerebro_ means _brain_ in spanish, and actually it shouldn't be pronounced _cereebro_ like americans do... cerebro.io wasn't availble though !
 
