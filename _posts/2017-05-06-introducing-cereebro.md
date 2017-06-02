@@ -51,7 +51,7 @@ We found all the pieces within the Spring eco-system :
  * Spring Boot and `@Conditional` annotations made our relationship detectors elegant and lightweight
  * Spring Cloud and Netflix OSS gave us a central registry of all applications running in the system, and also a centralized place to publish the relationships we detected between those apps
 
-Take a couple minutes to see how to [get started](https://github.com/cereebro/cereebro/wiki/Using-Cereebro-with-Spring-Cloud-Netflix-and-the-Eureka-Server), or find an even quicker summary below.
+Take a couple minutes to see how to [get started](http://docs.cereebro.io/Getting-Started), or find an even quicker summary below.
 
 ![cereebro-eureka-component-diagram](https://cereebro.github.io/images/cereebro-eureka.png)
 
@@ -95,7 +95,7 @@ public class CereebroServerEurekaClientApplication {
 ## Learn more
 
 Visit [Cereebro.io](http://cereebro.io) to find the [source code](http://cereebro.io) (Apache 2.0 License), 
-how to [get started](https://github.com/cereebro/cereebro/wiki/Using-Cereebro-with-Spring-Cloud-Netflix-and-the-Eureka-Server), 
+how to [get started](http://docs.cereebro.io/Getting-Started), 
 check out [samples](https://github.com/cereebro/cereebro-samples) and watch a [live demo](http://sample.cereebro.io), 
 or read the detailed [documentation](http://docs.cereebro.io).
 
