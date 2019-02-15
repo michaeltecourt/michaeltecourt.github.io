@@ -12,3 +12,5 @@ markdown: kramdown
 
 timezone: Europe/Paris
 
+plugins:
+  - jekyll-redirect-from
